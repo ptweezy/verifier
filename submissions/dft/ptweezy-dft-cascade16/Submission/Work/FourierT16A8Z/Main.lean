@@ -10,12 +10,12 @@ unmodified in this repository and still imported. Changed for this repository, a
   * every declaration of this file (and of the other 10 copied files) has the suffix `T16A8Z`
     on its name, so that it does not collide with OpenAI's original;
   * OpenAI's exponent `alpha = 1 - 2/10^11` and envelope `hills` are replaced by
-    `alphaT16A8Z = 1 - 30201599999/10^13` and `hillsT16A8Z` (Work/FourierT16A8Z/Seam.lean), and the single use of
+    `alphaT16A8Z = 1 - 15999/100000` and `hillsT16A8Z` (Work/FourierT16A8Z/Seam.lean), and the single use of
     OpenAI's `hills_program` by `hillsT16A8Z_program`;
   * `decimalExponent`, `decimalTime`, `TimeBounds`, `DFTGoal`, `ConvGoal` are replaced by their
-    `T16A8Z` versions from Work/FourierT16A8Z/Goal.lean (exponent `1 - 3020159999/10^12`);
+    `T16A8Z` versions from Work/FourierT16A8Z/Goal.lean (exponent `1 - 4/25`);
   * imports point to the copies.
-  * literal `let d : ℝ := 2/(10:ℝ)^11` -> `let d : ℝ := 30201599999/(10:ℝ)^13` (alpha_thetaT16A8Z: the local constant d must equal 1 - alphaT16A8Z)
+  * literal `let d : ℝ := 2/(10:ℝ)^11` -> `let d : ℝ := 15999/(100000:ℝ)` (alpha_thetaT16A8Z: the local constant d must equal 1 - alphaT16A8Z)
   * `theorem transform_mainT16A8Z : DFTGoalT16A8Z :=`: docstring added
   * `theorem convolution_mainT16A8Z : ConvGoalT16A8Z :=`: docstring added
 Comments and docstrings below are OpenAI's and describe OpenAI's network, not ours.
@@ -57,7 +57,7 @@ lemma theta_ltT16A8Z : theta < 1 := by
   exact Real.log_lt_log (by linarith) h.2
 
 lemma alpha_thetaT16A8Z : alphaT16A8Z < theta := by
-  let d : ℝ := 30201599999/(10:ℝ)^13
+  let d : ℝ := 15999/(100000:ℝ)
   have hp : 0<d := by dsimp [d]; norm_num
   have hm : 2 ≤ paperM := by norm_num [paperM]
   have hx : 0<paperMultiplier := lt_trans zero_lt_one multiplier_rangeT16A8Z.1
@@ -154,9 +154,9 @@ theorem convolution_main_orderT16A8Z : ∃ order solve W,
   exact ⟨o,s,lunchT16A8Z a b stretchT16A8Z,hp,Skies.time_boundT16A8Z h a b,fun n hn =>
     ⟨ho n hn,(ho n hn).symm ▸ (receipt_bound _ (stretch_posT16A8Z hn)).2⟩⟩
 
-/-- **The discrete Fourier transform of every length in `O(n (log n)^(1 - 3020159999/10^12))`.**
+/-- **The discrete Fourier transform of every length in `O(n (log n)^(1 - 4/25))`.**
 OpenAI's `transform_main` (one fixed program, OpenAI's own `DFTProgram`, `paperTime` and `nlogn`)
-with the decimal exponent `1 - 1/10^13` replaced by `decimalExponentT16A8Z = 1 - 3020159999/10^12`
+with the decimal exponent `1 - 1/10^13` replaced by `decimalExponentT16A8Z = 1 - 4/25`
 (Work/FourierT16A8Z/Goal.lean). Sibling of the Walsh-Hadamard theorem `wht_main_block_T16A8Z_x`: both
 follow from one kernel program, `RAM.hillsT16A8Z_program` (Work/FourierT16A8Z/Seam.lean). -/
 theorem transform_mainT16A8Z : DFTGoalT16A8Z :=

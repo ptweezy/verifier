@@ -17,8 +17,8 @@ set_option linter.constructorNameAsVariable false
 
 namespace OAI.PowerSaving.PB.T16A8Z
 
-lemma rawTgt16Z_eq : rawTgt16Z = TensorProto.P16A8Z.TP16A8Z := rfl
-lemma rawPaid16Z_eq : rawPaid16Z = TensorProto.P16A8Z.PP16A8Z := rfl
+lemma rawTgt16Z_eq : rawTgt16Z = TensorProto.Cascade8.TPCascade8 := rfl
+lemma rawPaid16Z_eq : rawPaid16Z = TensorProto.Cascade8.PPCascade8 := rfl
 
 /-- **The tensor engine**: a RAW p16a8z certificate with `G` copies gives the engine statement of T16A8Z. -/
 theorem tensorEngine16Z (α ρ σ : Type) [Fintype α] [DecidableEq α] [Fintype ρ] [DecidableEq ρ] [Fintype σ]

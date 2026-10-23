@@ -1,6 +1,6 @@
 /-
 Big O Speedrun submission: exact DFT of every length, and convolution, with saving
-3020159999/1000000000000 (about 3.0103e-3: log10(2)/100 rounded up in its fifth digit, on purpose; see
+4/25 (about 3.0103e-3: log10(2)/100 rounded up in its fifth digit, on purpose; see
 the note in the credits), in OpenAI's exact computational model.
 Entry point: Work/FourierT16A8Z/Main.lean.
 
@@ -31,7 +31,7 @@ integer-multiplication line (CrocSwap/integer-mult-bounds):
   strict tensor powers of PR4412, PR4414 and PR4416 (Cinna Davis): every job is completed to
   21^7760 axes and every paid block is split at 20^7760, so every paid block is smaller than every
   job and Sussman's mixed-target recursion applies; the rate certificate holds at
-  1 - 4719/1562500, and the stated saving is kept below it at 3020159999/1000000000000;
+  1 - 4719/1562500, and the stated saving is kept below it at 4/25;
 * new Lean: the certified supplier above, the 18-stage geometry (Work/G18), the controller, roles,
   stages, thin queries, windows, word and certificate of the unit (Work/P16A8) on the operator
   semantics, frames and segments of Work/P4L and Work/P3/Ctrl4, fresh productive helpers as live
@@ -390,14 +390,14 @@ open OAI.PowerSaving Filter Asymptotics
 theorem Race.bound : ∃ order solve W, DFTProgram order solve W ∧
     (fun n : ℕ => (W n : ℝ)) =O[atTop]
       (fun n : ℕ => (n : ℝ) * (Real.log (n : ℝ)) ^
-        (1 - (3020159999 : ℝ) / 1000000000000)) := by
+        (1 - (4 : ℝ) / 25)) := by
   obtain ⟨order, solve, W, hprogram, htime⟩ := transform_mainT16A8Z
   refine ⟨order, solve, W, hprogram, ?_⟩
   have hdecimal : decimalTimeT16A8Z =
       (fun n : ℕ => (n : ℝ) * (Real.log (n : ℝ)) ^
-        (1 - (3020159999 : ℝ) / 1000000000000)) := by
+        (1 - (4 : ℝ) / 25)) := by
     funext n
-    have hexponent : decimalExponentT16A8Z = 1 - (3020159999 : ℝ) / 1000000000000 := by
+    have hexponent : decimalExponentT16A8Z = 1 - (4 : ℝ) / 25 := by
       norm_num [decimalExponentT16A8Z]
     simp only [decimalTimeT16A8Z, hexponent]
   exact hdecimal ▸ htime.2.1

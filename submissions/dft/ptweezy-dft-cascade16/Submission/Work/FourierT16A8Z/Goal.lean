@@ -17,7 +17,7 @@ namespace PowerSaving
 noncomputable section
 open RAM RAM.Ty Filter Asymptotics
 
-def decimalExponentT16A8Z : ℝ := 1 - 3020159999/(10^(12:ℕ))
+def decimalExponentT16A8Z : ℝ := 1 - 4/25
 
 def decimalTimeT16A8Z (n : ℕ) : ℝ := (n:ℝ) * (Real.log (n:ℝ)) ^ decimalExponentT16A8Z
 
