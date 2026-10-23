@@ -42,13 +42,10 @@ integer-multiplication line (CrocSwap/integer-mult-bounds):
   his that this proof does not import are left out.
 
 Credits: Jacob Sussman's header below credits his construction and everything it builds on;
-the credits of my earlier work are in the header of my previous entry (its Submission.lean).
-  Author and supervisor: Halit Ziya KARTAL (https://github.com/HalitZiyaKARTAL,
-  https://halitziyakartal.github.io).
-  LLM credits↓
-  claude code continued working as usual
-
-  note: i intentionally made it O(n(logn)^(1-(log2)/100))  can be nice to keep it at least until someone gets to π(pi)/1000   it looks more funny this way :)
+the integer-multiplication lineage is credited to Marius-Paul Dumitrean, Jeremy Kothe, Mason Hale,
+Cinna Davis, Nil Mamano, Ryan Shea, and Halit Ziya Kartal.
+  Author and formalization: Parker L (@ptweezy).
+  LLM pair-programming: Google DeepMind Antigravity.
 -/
 
 /-
